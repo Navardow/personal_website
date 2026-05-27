@@ -1,0 +1,25 @@
+{
+    "projects": [
+        {
+            "slug": "project1page",
+            "file": "test/test1.md",
+            "title": "Title 1",
+            "summary": "this is a summary",
+            "tags": ["html", "css", "javascript"]
+         },
+        {
+            "slug": "project2page",
+            "file": "test/test2",
+            "title": "Title 2",
+            "summary": "this is a summary",
+            "tags": ["linux", "C++", "C"]
+         },
+        {
+            "slug": "project3page",
+            "file": "test/test3",
+            "title": "Title 3",
+            "summary": "this is a summary",
+            "tags": ["tmux", "nvim", "algoriths"]
+         }
+    ]
+}

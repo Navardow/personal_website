@@ -6,30 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
     <link href="/styles/style.css" rel="stylesheet">
+    <script src="/scripts/main.js" type="module"></script>
 </head>
 
 <body>
+    <nav>
+        <a href="/" class="logo-wrapper">
+            <img class="logo-icon dark-logo-icon" src="/assets/icons/icon8vblack.png" alt="Logo" />
+            <img class="logo-icon light-logo-icon" src="/assets/icons/icon8vwhite.png" alt="Logo" />
+            <h2 class="logo-name" style="">ardo</h2>
+        </a>
+        <ul class="nav-links">
+            <li><a href="">Contact</a> </li>
+            <li><a href="">About</a> </li>
+            <li><a href="">Posts</a> </li>
+        </ul>
+        <div class=theme-toggle-buttons>
+            <img class="theme-toggle-dark theme-toggle" src="assets/offswitch.png"> </img>
+            <img class="theme-toggle-light theme-toggle" src="assets/onswitch.png"> </img>
+        </div>
+    </nav>
     <div class="container">
-
-        <header>
-            <nav>
-                <a href="/" class="logo-wrapper" id="">
-                    <div class="logo-icon">
-                        <img id="dark-logo" src="/assets/icons/icon8vblack.png" alt="Logo" class="" />
-                        <img id="light-logo" src="/assets/icons/icon8vwhite.png" alt="Logo" class="" />
-                    </div>
-                    <div class="" style="">ardo</div>
-                </a>
-                <div id="site-links-wrapper">
-                    <ul>
-                        <li><a href=""> Projects </a> </li>
-                        <li><a href=""> Contact </a> </li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
-        <main>
-
+        <main class="main-content">
+            <section class="intro">
+                <h3> Navardo Williams</h3>
+                <p>This is my portfolio, enjoy!</p>
+            </section>
+            <section>
+                <h2>Featured</h2>
+                <ul class="projects">
+                    <li class="project-item">
+                        <div class="project-card">
+                            <h2 class="project-title">
+                                Title 1
+                            </h2>
+                            <p class="project-summary">this is a summary </p>
+                            <div class="project-card-foot">
+                                <ul class="project-tags">
+                                    <li>tag 1</li>
+                                    <li>tag 2</li>
+                                    <li>tag 3</li>
+                                    <li>tag 4</li>
+                                </ul>
+                                <a class="project-link" href="">click to view &rarr;</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </section>
         </main>
     </div>
 </body>

@@ -23,26 +23,155 @@
 
 body {
     min-height: 100vh;
+    min-width: 100vw;
     background-color: rgb(var(--color-bg));
     padding: 0 2rem;
     margin: 0;
 }
 
 nav {
+    position: relative;
     display: flex;
-    width: 100vw;
+    width: 100%;
+    max-width: 1200px;
+    padding: 3rem 0;
+    justify-content: space-between;
+    height: auto;
+    margin-bottom: 2rem;
+    margin-inline: auto;
+}
+
+a,
+a:visited {
+    color: initial;
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
 }
 
 .container {
     width: 100%;
+    height: 100%;
     max-width: 1200px;
     margin-inline: auto;
     padding-inline: clamp(1rem, 3vw, 2rem);
+    padding: 0 5rem;
 }
 
+/*remove light logo temporarily*/
+.light-logo-icon {
+    visibility: hidden;
+}
 
-.logo-wrapper {}
+.logo-icon {
+    position: absolute;
+    top: 1rem;
+    z-index: 1;
+    width: 4.5rem;
+}
 
-.logo-wrapper:hover {}
+.logo-name {
+    position: absolute;
+    left: 2.9rem;
+    top: .5rem;
+}
 
-.logo-icon {}
+.logo-wrapper {
+    position: relative;
+    bottom: 2rem;
+    display: flex;
+    gap: 0;
+    flex: 3;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-evenly;
+    flex: 2;
+}
+
+.theme-toggle-dark {
+    visibility: hidden;
+}
+
+.theme-toggle-buttons {
+    position: relative;
+    flex: .2;
+    bottom: .3rem;
+
+}
+
+.theme-toggle {
+    position: absolute;
+    width: 2.5rem;
+}
+
+.intro {
+    text-align: center;
+}
+
+@media (max-width: 48rem) {
+    nav {
+        padding: 1rem 0;
+        margin-top: 1.5rem;
+    }
+
+    body {
+        padding: 0;
+    }
+
+    .container {
+        padding: 0 2rem;
+    }
+
+    .logo-wrapper {
+        flex: .5;
+    }
+
+    .logo-icon {
+        width: 3.5rem;
+    }
+
+    .logo-name {
+        left: 2.3rem;
+        top: 1rem;
+        font-size: medium;
+    }
+
+    .nav-links {
+        font-size: .80rem;
+        flex: 2 1 auto;
+        justify-content: space-evenly;
+    }
+
+    .theme-toggle-buttons {
+        flex: .5;
+    }
+
+    .theme-toggle {
+        width: 2rem;
+    }
+
+}
+
+.project-card {}
+
+.project-tags {
+    display: flex;
+    flex: 1;
+    gap: 1rem;
+}
+
+.project-card-foot {
+    display: flex;
+    justify-content: space-between;
+}
+
+.project-link {
+    text-align: right;
+    flex: 1;
+}
