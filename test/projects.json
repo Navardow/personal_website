@@ -3,22 +3,22 @@
         {
             "slug": "project1page",
             "file": "test/test1.md",
-            "title": "Title 1",
-            "summary": "this is a summary",
+            "title": "Personal Website",
+            "summary": "Personal website, developed entirely using HTML, CSS, and JavaScript. It runs entirely in the browser with a custom implemented SPA router",
             "tags": ["html", "css", "javascript"]
          },
         {
             "slug": "project2page",
             "file": "test/test2",
-            "title": "Title 2",
-            "summary": "this is a summary",
+            "title": "3D graphis renderer",
+            "summary": "A 3D graphics renderer built entirely in C. It processes and renders entirely on the spu using math to do so.",
             "tags": ["linux", "C++", "C"]
          },
         {
             "slug": "project3page",
             "file": "test/test3",
-            "title": "Title 3",
-            "summary": "this is a summary",
+            "title": "~/.dotfiles",
+            "summary": "My dot files for my x86_64 machine running arch linux in a wayland environtment.",
             "tags": ["tmux", "nvim", "algoriths"]
          }
     ]

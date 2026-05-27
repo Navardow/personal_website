@@ -1,55 +1,72 @@
 
 
+async function main() {
+
+    const d = await fetch_projects("./test/projects.json");
+    const featured = d.projects;
+
+    // push to ul in homepage
+    const featuredList = document.querySelector(".featured-list");
+    featured.forEach(p => featuredList.append(create_card(p)))
+
+
+    init_theme_toggle();
+}
+
+main();
+
 // fetch all projects in the projects folder
-async function fetchProjects() {
-    const res = await fetch("./test/projects.json");
+async function fetch_projects(path) {
+    const res = await fetch(path);
     return await res.json();
 }
 
-const d = await fetchProjects()
-console.log(d);
+//theme-toggle
+function init_theme_toggle() {
 
-const projects = d.projects;
+    const theme_toggle_btn = document.querySelector(".theme-toggle");
+    console.log(theme_toggle_btn)
+    theme_toggle_btn.addEventListener("click", () => {
+        console.log("hello from theme theme-toggle button");
+    });
 
-
-// push to ul in homepage
-const projectList = document.querySelector(".projects");
-projects.forEach(p => { projectList.append(create_card(p)) })
+    localStorage.setItem("theme", "dark");
+}
 
 // create cards
 function create_card(project) {
-    const project_item = document.createElement("li");
-    project_item.classList.add("project-item");
+    const featured_item = document.createElement("li");
+    featured_item.classList.add("featured-item");
 
-    const project_card = document.createElement("div");
-    project_card.classList.add("project-card");
+    const featured_card = document.createElement("div");
+    featured_card.classList.add("featured-card");
 
-    const project_title = document.createElement("h2");
-    project_title.classList.add("project-title")
-    project_title.textContent = project.title;
+    const featured_title = document.createElement("h2");
+    featured_title.classList.add("featured-title")
+    featured_title.textContent = project.title;
 
-    const project_summary = document.createElement("p");
-    project_summary.classList.add("summary");
-    project_summary.textContent = project.summary;
+    const featured_summary = document.createElement("p");
+    featured_summary.classList.add("featured-summary");
+    featured_summary.textContent = project.summary;
 
-    const project_card_foot = document.createElement("div");
-    project_card_foot.classList.add("project-card-foot");
+    const featured_card_foot = document.createElement("div");
+    featured_card_foot.classList.add("featured-card-foot");
 
-    const project_tags = document.createElement("ul");
-    project_tags.classList.add("project-tags");
+    const featured_tags = document.createElement("ul");
+    featured_tags.classList.add("featured-tags");
     project.tags.forEach((t) => {
         const tag = document.createElement("li");
         tag.textContent = t;
-        project_tags.append(tag);
+        featured_tags.append(tag);
     });
 
-    const project_link = document.createElement("a");
-    project_link.classList.add("project_link");
-    project_link.textContent = "Click to view →";
+    const featured_link = document.createElement("a");
+    featured_link.classList.add("featured-link");
+    featured_link.textContent = "Click to view →";
 
-    project_card_foot.append(project_tags, project_link);
-    project_card.append(project_title, project_summary, project_card_foot);
-    project_item.append(project_card);
+    featured_card_foot.append(featured_tags, featured_link);
+    featured_card.append(featured_title, featured_summary, featured_card_foot);
+    featured_item.append(featured_card);
 
-    return project_item;
+    return featured_item;
 }

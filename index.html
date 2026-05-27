@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
     <link href="/styles/style.css" rel="stylesheet">
-    <script src="/scripts/main.js" type="module"></script>
+    <script src="/scripts/main.js" type="module" defer></script>
 </head>
 
 <body>
@@ -19,7 +19,7 @@
         <ul class="nav-links">
             <li><a href="">Contact</a> </li>
             <li><a href="">About</a> </li>
-            <li><a href="">Posts</a> </li>
+            <li><a href="">Projects</a> </li>
         </ul>
         <div class=theme-toggle-buttons>
             <img class="theme-toggle-dark theme-toggle" src="assets/offswitch.png"> </img>
@@ -32,27 +32,31 @@
                 <h3> Navardo Williams</h3>
                 <p>This is my portfolio, enjoy!</p>
             </section>
-            <section>
-                <h2>Featured</h2>
-                <ul class="projects">
-                    <li class="project-item">
-                        <div class="project-card">
-                            <h2 class="project-title">
+            <section class="featured">
+                <h2 class="featured-header">Featured</h2>
+                <ul class="featured-list">
+                    <li class="featured-item" style="visibility: hidden; display: none;">
+                        <div class="featured-card">
+                            <h2 class="featured-title">
                                 Title 1
                             </h2>
-                            <p class="project-summary">this is a summary </p>
-                            <div class="project-card-foot">
-                                <ul class="project-tags">
-                                    <li>tag 1</li>
-                                    <li>tag 2</li>
-                                    <li>tag 3</li>
-                                    <li>tag 4</li>
+                            <p class="featured-summary">this is a summary </p>
+                            <div class="featured-card-foot">
+                                <ul class="featured-tags">
+                                    <li>tag1</li>
+                                    <li>tag2</li>
+                                    <li>tag3</li>
+                                    <li>tag4</li>
                                 </ul>
-                                <a class="project-link" href="">click to view &rarr;</a>
+                                <button>summary</button>
+                                <a class="featured-link" href="">click to view &rarr;</a>
                             </div>
                         </div>
                     </li>
                 </ul>
+            </section>
+            <section class="Working-on">
+                <h2>Working on</h2>
             </section>
         </main>
     </div>
