@@ -6,13 +6,13 @@
             "title": "Personal Website",
             "featured": true,
             "summary": "Personal website, developed entirely using HTML, CSS, and JavaScript. It runs entirely in the browser with a custom implemented SPA router",
-            "tags": ["html", "css", "javascript"]
+            "tags": ["html", "css", "javascript", "astro", "linux", "games", "talk"]
          },
         {
             "slug": "project2page",
             "file": "test/test2.md",
             "title": "3D graphis renderer",
-            "featured": false,
+            "featured": true,
             "summary": "A 3D graphics renderer built entirely in C. It processes and renders entirely on the spu using math to do so.",
             "tags": ["linux", "C++", "C"]
          },
@@ -20,7 +20,7 @@
             "slug": "project3page",
             "file": "test/test3.md",
             "title": "~/.dotfiles",
-            "featured": false,
+            "featured": true,
             "summary": "My dot files for my x86_64 machine running arch linux in a wayland environtment.",
             "tags": ["tmux", "nvim", "algoriths"]
          }
