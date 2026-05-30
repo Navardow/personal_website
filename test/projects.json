@@ -24,5 +24,13 @@
             "summary": "My dot files for my x86_64 machine running arch linux in a wayland environtment.",
             "tags": ["tmux", "nvim", "algoriths"]
          }
-    ]
+    ],
+    "about" : {
+        "author": "Navardo Williams"
+    },
+    "contact": {
+        "email": "navardowilliams@gmail.com"
+
+    }
+
 }

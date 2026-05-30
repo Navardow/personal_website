@@ -1,23 +1,26 @@
+import { router } from './router.js';
+import { meta } from "./data.js"
 
+const main_container = document.querySelector(".main-content");
 
-async function main() {
+function update_main_content(html_content) {
 
-    const all_projs = await fetch_projects("./test/projects.json");
-    const featured = all_projs.projects.filter(p => p.featured == true);
-
-    // push to ul in homepage
-    const featuredList = document.querySelector(".featured-list");
-    featured.forEach(p => featuredList.append(create_card(p)));
-
-    init_theme_toggle();
 }
 
-main();
+function init_site_links() {
+    const site_links = [...document.querySelectorAll(".site-link")];
+    site_links.forEach((p) => {
+        p.addEventListener("click", (e) => {
+            e.preventDefault();
+            console.log(e.target.href)
+            router(e.target.href);
+        })
+    })
+}
 
-// fetch all projects in the projects folder
-async function fetch_projects(path) {
-    const res = await fetch(path);
-    return await res.json();
+function init_featured_section(featured) {
+    const featuredList = document.querySelector(".featured-list");
+    featured.forEach(p => featuredList.append(create_card(p)));
 }
 
 //theme-toggle
@@ -87,7 +90,7 @@ function create_card(project) {
     });
 
     const featured_link = document.createElement("a");
-    featured_link.classList.add("featured-link");
+    featured_link.classList.add("featured-link", "site-link");
     featured_link.textContent = "Click to view →";
     featured_link.href = project.file;
 
@@ -97,3 +100,11 @@ function create_card(project) {
 
     return featured_item;
 }
+
+function main() {
+    const featured = meta.projects.filter(p => p.featured == true)
+    init_theme_toggle();
+    init_featured_section(featured);
+    init_site_links();
+}
+main();
