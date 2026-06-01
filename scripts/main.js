@@ -1,22 +1,29 @@
-import { router } from './router.js';
+import './router.js';
 import { meta } from "./data.js"
+import { router } from './router.js';
 
-const main_container = document.querySelector(".main-content");
 
-function update_main_content(html_content) {
+main();
 
+router.set_route("/", document.querySelector(".main-content").innerHTML);
+window.onpopstate = () => router.handle_route(window.location.href);
+
+
+function main() {
+    const featured = meta.projects.filter(p => p.featured == true)
+    init_theme_toggle();
+    init_featured_section(featured);
+
+    document.addEventListener("click", async (e) => {
+        const link = e.target.closest(".site-link");
+        if (!link) return;
+        e.preventDefault();
+        window.history.pushState({}, "", link.href);
+        console.log(link.href)
+        await router.handle_route(link.href);
+    });
 }
 
-function init_site_links() {
-    const site_links = [...document.querySelectorAll(".site-link")];
-    site_links.forEach((p) => {
-        p.addEventListener("click", (e) => {
-            e.preventDefault();
-            console.log(e.target.href)
-            router(e.target.href);
-        })
-    })
-}
 
 function init_featured_section(featured) {
     const featuredList = document.querySelector(".featured-list");
@@ -92,7 +99,8 @@ function create_card(project) {
     const featured_link = document.createElement("a");
     featured_link.classList.add("featured-link", "site-link");
     featured_link.textContent = "Click to view →";
-    featured_link.href = project.file;
+    featured_link.href = project.file.replace(".md", "");
+    console.log(featured_link.href, "card creation");
 
     featured_card_foot.append(featured_tags, featured_link);
     featured_card.append(featured_title, featured_summary_btn, featured_summary, featured_card_foot);
@@ -101,10 +109,3 @@ function create_card(project) {
     return featured_item;
 }
 
-function main() {
-    const featured = meta.projects.filter(p => p.featured == true)
-    init_theme_toggle();
-    init_featured_section(featured);
-    init_site_links();
-}
-main();

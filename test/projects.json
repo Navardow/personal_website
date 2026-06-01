@@ -1,24 +1,24 @@
 {
     "projects": [
         {
+            "file": "/test/test1.md",
             "slug": "project1page",
-            "file": "test/test1.md",
             "title": "Personal Website",
             "featured": true,
             "summary": "Personal website, developed entirely using HTML, CSS, and JavaScript. It runs entirely in the browser with a custom implemented SPA router",
             "tags": ["html", "css", "javascript", "astro", "linux", "games", "talk"]
          },
         {
+            "file": "/test/test2.md",
             "slug": "project2page",
-            "file": "test/test2.md",
             "title": "3D graphis renderer",
             "featured": true,
             "summary": "A 3D graphics renderer built entirely in C. It processes and renders entirely on the spu using math to do so.",
             "tags": ["linux", "C++", "C"]
          },
         {
+            "file": "/test/test3.md",
             "slug": "project3page",
-            "file": "test/test3.md",
             "title": "~/.dotfiles",
             "featured": true,
             "summary": "My dot files for my x86_64 machine running arch linux in a wayland environtment.",
@@ -26,10 +26,13 @@
          }
     ],
     "about" : {
+        "file": "/about.md",
         "author": "Navardo Williams"
     },
     "contact": {
+        "file": "/contact.md",
         "email": "navardowilliams@gmail.com"
+
 
     }
 
