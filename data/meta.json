@@ -1,0 +1,21 @@
+{
+    "about" : {
+        "file": "/data/about.md",
+        "author": "Navardo Williams"
+    },
+    "contact": {
+        "file": "/data/contact.md",
+        "email": "navardowilliams@gmail.com"
+    },
+    "projects": [
+        {
+            "file": "/data/projects/vardowill.md",
+            "slug": "project1page",
+            "title": "Personal Website",
+            "featured": true,
+            "summary": "Personal website, developed entirely using HTML, CSS, and JavaScript. It runs entirely in the browser with a custom implemented SPA router",
+            "tags": ["html", "css", "javascript"]
+         }
+    ]
+}
+

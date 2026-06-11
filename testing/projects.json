@@ -1,15 +1,15 @@
 {
     "projects": [
         {
-            "file": "/test/test1.md",
+            "file": "/testing/test1.md",
             "slug": "project1page",
             "title": "Personal Website",
             "featured": true,
             "summary": "Personal website, developed entirely using HTML, CSS, and JavaScript. It runs entirely in the browser with a custom implemented SPA router",
-            "tags": ["html", "css", "javascript", "astro", "linux", "games", "talk"]
+            "tags": ["html", "css", "javascript"]
          },
         {
-            "file": "/test/test2.md",
+            "file": "/testing/test2.md",
             "slug": "project2page",
             "title": "3D graphis renderer",
             "featured": true,
@@ -17,12 +17,12 @@
             "tags": ["linux", "C++", "C"]
          },
         {
-            "file": "/test/test3.md",
+            "file": "/testing/test3.md",
             "slug": "project3page",
             "title": "~/.dotfiles",
             "featured": true,
             "summary": "My dot files for my x86_64 machine running arch linux in a wayland environtment.",
-            "tags": ["tmux", "nvim", "algoriths"]
+            "tags": ["tmux", "nvim", "algoriths", "pink"]
          }
     ],
     "about" : {

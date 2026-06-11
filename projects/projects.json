@@ -1,0 +1,31 @@
+{
+    "projects": [
+        {
+            "title": "vardowill",
+            "summary": "A website dedicated to documenting all of my work. Developed entirely using vanilla HTML, CSS, and JavaScript.",
+            "tags": ["HTML", "CSS", "JavaScript"],
+            "file": "/projects/vardowill.md",
+            "featured": true
+        },
+        {
+            "title": "fjsk",
+            "summary": "A website dedicated to documenting all of my work. Developed entirely using vanilla HTML, CSS, and JavaScript.",
+            "tags": ["HTML", "CSS", "JavaScript"],
+            "file": "/projects/vardowill.md",
+            "featured": true
+        }
+
+    ],
+    "about" : {
+        "file": "/about.md",
+        "author": "Navardo Williams"
+    },
+    "contact": {
+        "file": "/contact.md",
+        "email": "navardowilliams@gmail.com"
+
+
+    }
+
+}
+

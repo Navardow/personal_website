@@ -1,16 +1,19 @@
-import './router.js';
-import { meta } from "./data.js"
-import { router } from './router.js';
+import { meta } from "./data.js";
+import { router } from "./router.js";
 
-
-main();
+await main();
 
 router.set_route("/", document.querySelector(".main-content").innerHTML);
-window.onpopstate = () => router.handle_route(window.location.href);
+window.onpopstate = () => router.handle_route(window.location.pathname);
+window.router = router;
+window.current_location = window.location.pathname;
 
+if (window.location.pathname !== "/") {
+    router.handle_route(window.location.pathname);
+}
 
-function main() {
-    const featured = meta.projects.filter(p => p.featured == true)
+async function main() {
+    const featured = meta.projects.filter((p) => p.featured == true);
     init_theme_toggle();
     init_featured_section(featured);
 
@@ -18,16 +21,13 @@ function main() {
         const link = e.target.closest(".site-link");
         if (!link) return;
         e.preventDefault();
-        window.history.pushState({}, "", link.href);
-        console.log(link.href)
-        await router.handle_route(link.href);
+        await router.handle_route(new URL(link.href).pathname);
     });
 }
 
-
 function init_featured_section(featured) {
     const featuredList = document.querySelector(".featured-list");
-    featured.forEach(p => featuredList.append(create_card(p)));
+    featured?.forEach((p) => featuredList.append(create_card(p)));
 }
 
 //theme-toggle
@@ -37,8 +37,9 @@ function init_theme_toggle() {
     const light_btn = document.querySelector(".theme-toggle-light");
     const dark_logo = document.querySelector(".dark-logo-icon");
     const light_logo = document.querySelector(".light-logo-icon");
-    const theme_toggle_btns = document.querySelectorAll(".theme-toggle-buttons");
-
+    const theme_toggle_btns = document.querySelectorAll(
+        ".theme-toggle-buttons",
+    );
 
     const set_light = () => {
         localStorage.setItem("theme", "light");
@@ -47,22 +48,24 @@ function init_theme_toggle() {
         dark_btn.style.display = "none";
         light_logo.style.display = "none";
         dark_logo.style.display = "block";
-    }
+    };
 
     const set_dark = () => {
-        localStorage.setItem("theme", "dark")
+        localStorage.setItem("theme", "dark");
         document.documentElement.setAttribute("data-theme", "dark");
         light_btn.style.display = "none";
         dark_btn.style.display = "block";
         light_logo.style.display = "block";
         dark_logo.style.display = "none";
-    }
+    };
 
     theme_pref == "dark" ? set_dark() : set_light();
 
-    theme_toggle_btns.forEach(b => b.addEventListener("click", (e) => {
-        e.target === light_btn ? set_dark() : set_light();
-    }));
+    theme_toggle_btns.forEach((b) =>
+        b.addEventListener("click", (e) => {
+            e.target === light_btn ? set_dark() : set_light();
+        }),
+    );
 }
 
 // create cards
@@ -74,8 +77,8 @@ function create_card(project) {
     featured_card.classList.add("featured-card");
 
     const featured_title = document.createElement("h3");
-    featured_title.classList.add("featured-title")
-    featured_title.textContent = project.title;
+    featured_title.classList.add("featured-title");
+    featured_title.textContent = project?.title;
 
     const featured_summary_btn = document.createElement("button");
     featured_summary_btn.classList.add("sum-btn");
@@ -90,7 +93,7 @@ function create_card(project) {
 
     const featured_tags = document.createElement("ul");
     featured_tags.classList.add("featured-tags");
-    project.tags.forEach((t) => {
+    project.tags?.forEach((t) => {
         const tag = document.createElement("li");
         tag.textContent = t;
         featured_tags.append(tag);
@@ -99,13 +102,16 @@ function create_card(project) {
     const featured_link = document.createElement("a");
     featured_link.classList.add("featured-link", "site-link");
     featured_link.textContent = "Click to view →";
-    featured_link.href = project.file.replace(".md", "");
-    console.log(featured_link.href, "card creation");
+    featured_link.href = router.normalize_path(project.file);
 
     featured_card_foot.append(featured_tags, featured_link);
-    featured_card.append(featured_title, featured_summary_btn, featured_summary, featured_card_foot);
+    featured_card.append(
+        featured_title,
+        featured_summary_btn,
+        featured_summary,
+        featured_card_foot,
+    );
     featured_item.append(featured_card);
 
     return featured_item;
 }
-

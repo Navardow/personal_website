@@ -11,6 +11,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "browser-sync": "^3.0.4"
+    "browser-sync": "^3.0.4",
+    "marked": "^18.0.5",
+    "netlify-cli": "^26.1.0"
   }
 }
