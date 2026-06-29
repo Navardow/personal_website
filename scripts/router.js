@@ -24,6 +24,7 @@ files_promises.then(async (r) => {
         ),
     );
     routes_ready = true;
+    console.log(routes);
 });
 
 export const router = {
@@ -33,9 +34,14 @@ export const router = {
         window.history.pushState({}, "", path);
         window.current_location = path;
         const main_content = document.querySelector(".main-content");
-        main_content.innerHTML = "<h1> place holder</h1>";
+        main_content.innerHTML = "<h3> loading... </h2>";
         const html = await router.get_route(path);
-        main_content.innerHTML = html;
+        if (path !== "/projects") {
+            main_content.innerHTML = html;
+        } else {
+            main_content.innerHTML = "";
+            main_content.append(html);
+        }
     },
 
     set_route(path, html_content) {

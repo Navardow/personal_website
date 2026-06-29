@@ -13,6 +13,7 @@ if (window.location.pathname !== "/") {
 }
 
 async function main() {
+    projects_page();
     const featured = meta.projects.filter((p) => p.featured == true);
     init_theme_toggle();
     init_featured_section(featured);
@@ -114,4 +115,13 @@ function create_card(project) {
     featured_item.append(featured_card);
 
     return featured_item;
+}
+
+function projects_page() {
+    const project_list = document.createElement("ul");
+    project_list.classList.add("project-list");
+    meta.projects?.forEach((p) => {
+        project_list.append(create_card(p));
+    });
+    router.set_route("/projects", project_list);
 }

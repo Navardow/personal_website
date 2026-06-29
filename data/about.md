@@ -1,1 +1,3 @@
-## this is the about page
+## Navardo Williams
+
+I study computer science. will finish
