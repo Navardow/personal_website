@@ -275,7 +275,7 @@ a {
 .project-list .featured-card:hover {
     color: rgb(var(--color-bg));
     background-color: rgb(var(--color-accent));
-    transform: translateZ(1rem);
+    transform: translateZ(0rem);
 }
 
 .project-list .featured-summary {
@@ -306,7 +306,7 @@ a {
     }
 
     body {
-        padding: 2rem 0 0;
+        padding: 0;
     }
 
     p,

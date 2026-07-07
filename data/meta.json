@@ -10,34 +10,9 @@
     "projects": [
         {
             "file": "/data/projects/vardowill.md",
-            "slug": "project1page",
-            "title": "Personal Website",
+            "title": "Portfolio Site",
             "featured": true,
-            "summary": "Personal website, developed entirely using HTML, CSS, and JavaScript. It runs entirely in the browser with a custom implemented SPA router",
-            "tags": ["html", "css", "javascript"]
-         },
-         {
-             "file": "/data/projects/vardowill.md",
-             "slug": "project1page",
-             "title": "Personal Website",
-             "featured": false,
-             "summary": "Personal rowser with a custom implemented SPA router",
-             "tags": ["html", "css", "javascript"]
-         },
-        {
-            "file": "/data/projects/vardowill.md",
-            "slug": "project1page",
-            "title": "Personal Website",
-            "featured": false,
-            "summary": "Personal website, developed entirely using HTML, CSS, and JavaScript. It runs entirely in the browser with a custom implemented SPA router",
-            "tags": ["html", "css", "javascript"]
-         },
-        {
-            "file": "/data/projects/vardowill.md",
-            "slug": "project1page",
-            "title": "Personal Website",
-            "featured": false,
-            "summary": "mplemented SPA router",
+            "summary": "Portfolio site, developed using vanilla HTML, CSS, and JavaScript. Runs natively in the browser with a custom implemented SPA router",
             "tags": ["html", "css", "javascript"]
          }
     ]
