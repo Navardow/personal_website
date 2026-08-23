@@ -14,6 +14,13 @@
             "featured": true,
             "summary": "Portfolio site, developed using vanilla HTML, CSS, and JavaScript. Runs natively in the browser with a custom implemented SPA router",
             "tags": ["html", "css", "javascript"]
+         },
+         {
+             "file": "/data/projects/dotfiles.md",
+             "title": "~/.dotfiles",
+             "featured": true,
+             "summary": "Config for minimal arch linux setup, aimed at maximizing productivity for development.",
+             "tags": ["Linux", "Tmux", "Nvim", "Arch"]
          }
     ]
 }

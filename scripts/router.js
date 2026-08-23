@@ -1,6 +1,20 @@
 import { marked as convert } from "https://cdn.jsdelivr.net/npm/marked/+esm";
 import { meta } from "./data.js";
 
+const renderer = {
+    image({ href, title, text }) {
+        return `<img src="${href}" alt="${text}" class="md-img"${
+            title ? ` title="${title}"` : ""
+        }>`;
+    },
+    paragraph({ tokens }) {
+        const text = this.parser.parseInline(tokens);
+        return `<p class="md-p-text">${text}</p>`;
+    },
+};
+
+convert.use({ renderer });
+
 const routes = {};
 
 const files = meta.projects
