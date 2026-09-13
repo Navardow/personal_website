@@ -38,7 +38,6 @@ files_promises.then(async (r) => {
         ),
     );
     routes_ready = true;
-    console.log(routes);
 });
 
 export const router = {
