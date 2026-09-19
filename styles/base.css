@@ -1,0 +1,84 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --color-bg: 255 255 255;
+    --color-text: 10 10 10;
+    --color-primary: 151 141 130;
+    --color-secondary: 200 191 183;
+    --color-accent: 105 105 105;
+}
+
+[data-theme="dark"] {
+    --color-bg: 5 5 5;
+    --color-text: 245 245 245;
+    --color-primary: 125 115 104;
+    --color-secondary: 72 63 55;
+    --color-accent: 195 195 195;
+}
+
+body {
+    min-height: 100vh;
+    min-width: 100vw;
+    padding: 0 2rem;
+    margin: 0;
+    color: rgb(var(--color-text));
+    background-color: rgb(var(--color-bg));
+    transition: background-color 0.3s;
+    font-family: "Inter", sans-serif;
+    /*font-family: 'Brush Script MT';*/
+}
+
+a,
+a:visited {
+    color: rgb(var(--color-text));
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+p,
+li,
+a {
+    font-size: 0.9rem;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: clamp(1rem, 3vw, 2rem);
+    padding: 0 5rem;
+}
+
+.main-content {
+    margin: 0 0 5rem;
+}
+
+.intro {
+    text-align: center;
+}
+
+@media (max-width: 48rem) {
+    body {
+        padding: 0;
+    }
+
+    p,
+    li,
+    a {
+        font-size: 0.8rem;
+    }
+
+    .container {
+        padding: 0 2rem;
+    }
+}
