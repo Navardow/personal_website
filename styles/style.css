@@ -27,9 +27,12 @@ body {
     margin: 0;
     color: rgb(var(--color-text));
     background-color: rgb(var(--color-bg));
-    transition: background-color 0.3s;
     font-family: "Inter", sans-serif;
-    /*font-family: 'Brush Script MT';*/
+}
+
+body, 
+body *{
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, fill 0.3s ease, stroke 0.3s ease;
 }
 
 nav {
@@ -103,13 +106,9 @@ a {
     display: flex;
     gap: 0;
     flex: 3;
-    perspective: 30rem;
+    transition: transform 0.3s ease;
 }
 
-.logo-icon,
-.logo-name {
-    transition: transform 0.3s ease-in-out;
-}
 
 .nav-links {
     position: relative;
@@ -147,7 +146,7 @@ a {
     flex: 0.2;
     bottom: 0.3rem;
     height: auto;
-    perspective: 30rem;
+    transition: transform 0.3s ease;
 }
 
 .theme-toggle {
@@ -155,7 +154,6 @@ a {
     width: 2.2rem;
     cursor: pointer;
     right: 1rem;
-    transition: transform 0.3s ease-in-out;
 }
 
 /*
@@ -182,7 +180,7 @@ a {
 }
 
 .featured-item {
-    perspective: 30rem;
+    perspective: 10rem;
 }
 
 .featured-card {
@@ -192,6 +190,7 @@ a {
     max-width: 320px;
     min-width: 100px;
     transition: transform 0.5s ease;
+    -webkit-font-smoothing: antialiased;
 }
 
 .featured-title {
@@ -226,6 +225,8 @@ a {
     transition: transform 0.3s ease;
     width: max-content;
     align-self: flex-end;
+    will-change: transform;
+    -webkit-font-smoothing: antialiased;
 }
 
 .sum-btn {
@@ -276,14 +277,9 @@ a {
  * */
 
 @media (hover: hover) and (pointer: fine) {
-    .logo-wrapper:hover .logo-icon,
-    .logo-wrapper:hover .logo-name {
-        transform: translateZ(0.2rem);
-        color: rgb(var(--color-text));
-    }
-
-    .theme-toggle:hover {
-        transform: translateZ(2rem);
+    
+    .logo-wrapper:hover, .theme-toggle-buttons:hover{
+        transform: translateY(-0.15rem) scale(1.01);
     }
 
     .nav-links li:hover::after {
@@ -297,7 +293,7 @@ a {
     .featured-card:hover {
         /*color: rgb(var(--color-bg));
         background-color: rgb(var(--color-accent));*/
-        transform: translateZ(0.5rem);
+        transform: translateY(-0.15rem) scale(1.01);
         border: 1px solid rgb(var(--color-accent));
     }
 
@@ -306,7 +302,7 @@ a {
     }
 
     .featured-link:hover {
-        transform: translateX(1rem);
+        transform: translateX(1rem); 
     }
 }
 

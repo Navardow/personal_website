@@ -3,9 +3,8 @@ import { meta } from "./data.js";
 
 const renderer = {
     image({ href, title, text }) {
-        return `<img src="${href}" alt="${text}" class="md-img"${
-            title ? ` title="${title}"` : ""
-        }>`;
+        return `<img src="${href}" alt="${text}" class="md-img"${title ? ` title="${title}"` : ""
+            }>`;
     },
     paragraph({ tokens }) {
         const text = this.parser.parseInline(tokens);
@@ -38,7 +37,6 @@ files_promises.then(async (r) => {
         ),
     );
     routes_ready = true;
-    console.log(routes);
 });
 
 export const router = {
