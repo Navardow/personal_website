@@ -1,0 +1,140 @@
+nav {
+    position: sticky;
+    background-color: rgb(var(--color-bg));
+    top: 0;
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    padding: 3rem 0;
+    justify-content: space-between;
+    height: auto;
+    margin-bottom: 2rem;
+    margin-inline: auto;
+    perspective: 30rem;
+}
+
+.logo-icon {
+    position: absolute;
+    top: 1rem;
+    z-index: 1;
+    width: 4.5rem;
+    display: none;
+}
+
+.logo-name {
+    position: absolute;
+    left: 2.8rem;
+    top: 0.9rem;
+    color: rgb(var(--color-text));
+}
+
+.logo-wrapper {
+    position: relative;
+    bottom: 2rem;
+    display: flex;
+    gap: 0;
+    flex: 3;
+    transition: transform 0.3s ease;
+}
+
+.logo-icon,
+.logo-name {
+    transition: transform 0.3s ease-in-out;
+}
+
+.nav-links {
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+    flex: 2;
+}
+
+.nav-links li {
+    width: max-content;
+    position: relative;
+}
+
+.nav-links li::after {
+    content: "";
+    border-radius: 1rem;
+    position: absolute;
+    background: rgb(var(--color-text));
+    height: 2px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+}
+
+.nav-links li:has(a.active)::after {
+    transform: scaleX(1);
+}
+
+.theme-toggle-buttons {
+    position: relative;
+    flex: 0.2;
+    bottom: 0.3rem;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle {
+    position: absolute;
+    width: 2.2rem;
+    cursor: pointer;
+    right: 1rem;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .logo-wrapper:hover,
+    .theme-toggle-buttons:hover {
+        transform: translateY(-0.05rem) scale(1.01);
+    }
+
+    .nav-links li:hover::after {
+        transform: scaleX(1);
+    }
+
+    .nav-links a:hover {
+        color: rgb(var(--color-text));
+    }
+}
+
+@media (max-width: 48rem) {
+    nav {
+        padding: 1rem 0;
+        margin-top: 1.5rem;
+    }
+
+    .logo-wrapper {
+        flex: 0.5;
+    }
+
+    .logo-icon {
+        width: 3.5rem;
+    }
+
+    .logo-name {
+        left: 2.3rem;
+        top: 1rem;
+        font-size: medium;
+        display: none;
+    }
+
+    .nav-links {
+        font-size: 0.8rem;
+        flex: 2 1 auto;
+        justify-content: space-evenly;
+    }
+
+    .theme-toggle-buttons {
+        flex: 0.5;
+    }
+
+    .theme-toggle {
+        width: 2rem;
+    }
+}

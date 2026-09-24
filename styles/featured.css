@@ -1,0 +1,128 @@
+.featured {
+    margin-bottom: 4rem;
+}
+
+.featured-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+
+.featured-card {
+    border: 1px rgb(var(--color-bg)) solid;
+    border-radius: 1rem;
+    padding: 1rem 2rem;
+    max-width: 320px;
+    min-width: 100px;
+    transition: transform 0.5s ease;
+}
+
+.featured-title {
+    font-size: large;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    margin-top: 0;
+    /*might delete*/
+}
+
+.featured-tags {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    gap: 1rem;
+    font-style: italic;
+}
+
+.featured-card-foot {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    row-gap: 0.5rem;
+    column-gap: 0.75rem;
+}
+
+.featured-link {
+    font-style: italic;
+    text-align: right;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    width: max-content;
+    align-self: flex-end;
+}
+
+.sum-btn {
+    display: none;
+}
+
+.project-list .featured-summary {
+    display: block;
+}
+
+.project-card {
+    padding: 2rem 2rem 1rem;
+    border-bottom: 1px solid rgba(var(--color-accent) / 0.2);
+    border-radius: 0.5rem;
+    max-width: 100%;
+}
+
+.project-list {
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.project-title {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .featured-card:hover {
+        transform: translateY(-0.1rem) scale(1.01);
+        border: 1px solid rgb(var(--color-accent));
+    }
+
+    .featured-card:hover a {
+        color: inherit;
+    }
+
+    .featured-link:hover {
+        transform: translateX(1rem);
+    }
+}
+
+@media (max-width: 48rem) {
+    .featured-summary {
+        display: none;
+    }
+
+    .featured-card {
+        padding: 0 2rem 1rem;
+        border-bottom: 1px solid rgba(var(--color-accent) / 0.2);
+        border-radius: 0.5rem;
+        max-width: 100%;
+    }
+
+    .featured-list {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .featured-title {
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+    }
+
+    .sum-btn {
+        display: inline-block;
+        border: 1px solid;
+        border-radius: 1rem;
+        margin-bottom: 1rem;
+        padding: 0 0.6rem;
+        background-color: rgb(var(--color-bg));
+        color: rgb(var(--color-text));
+        box-shadow: rgb(var(--color-text));
+        font-style: italic;
+    }
+}
