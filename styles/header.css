@@ -13,10 +13,6 @@ nav {
     perspective: 30rem;
 }
 
-/*
- * -- Header --
- * */
-
 .logo-icon {
     position: absolute;
     top: 1rem;
@@ -38,7 +34,7 @@ nav {
     display: flex;
     gap: 0;
     flex: 3;
-    perspective: 30rem;
+    transition: transform 0.3s ease;
 }
 
 .logo-icon,
@@ -82,7 +78,7 @@ nav {
     flex: 0.2;
     bottom: 0.3rem;
     height: auto;
-    perspective: 30rem;
+    transition: transform 0.3s ease;
 }
 
 .theme-toggle {
@@ -90,18 +86,12 @@ nav {
     width: 2.2rem;
     cursor: pointer;
     right: 1rem;
-    transition: transform 0.3s ease-in-out;
 }
 
 @media (hover: hover) and (pointer: fine) {
-    .logo-wrapper:hover .logo-icon,
-    .logo-wrapper:hover .logo-name {
-        transform: translateZ(0.2rem);
-        color: rgb(var(--color-text));
-    }
-
-    .theme-toggle:hover {
-        transform: translateZ(2rem);
+    .logo-wrapper:hover,
+    .theme-toggle-buttons:hover {
+        transform: translateY(-0.05rem) scale(1.01);
     }
 
     .nav-links li:hover::after {
