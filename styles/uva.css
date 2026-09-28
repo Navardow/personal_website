@@ -1,0 +1,73 @@
+.uva h3,
+h4,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.uva {
+    border: solid black 1px;
+    max-width: 25rem;
+    min-width: 10rem;
+    border-radius: 1rem;
+    padding: 0 1.5rem 1rem;
+}
+
+.uva-stats-head,
+.uva-uname-id {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.uva-stats-head {
+    padding: 1rem 0 1rem;
+    margin: 0;
+}
+
+.uva-id {
+    border: solid grey 1px;
+    border-radius: 0.5rem;
+    padding: 0.3rem;
+}
+
+.stat-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.stat-items li {
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+    background-color: rgb(var(--color-text));
+    color: rgb(var(--color-bg));
+    padding: 0.5rem 1rem;
+    gap: 1rem;
+    align-items: center;
+}
+
+.uva-stats {
+    margin-bottom: 1rem;
+}
+
+.uva-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.uhunt-link,
+.sol-github {
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+    background-color: rgb(var(--color-text));
+}
+
+.uhunt-link a,
+.sol-github a {
+    color: rgb(var(--color-bg));
+}
