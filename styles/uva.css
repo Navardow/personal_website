@@ -6,10 +6,8 @@ p {
 }
 
 .uva {
-    border: solid black 1px;
     max-width: 25rem;
     min-width: 10rem;
-    border-radius: 1rem;
     padding: 0 1.5rem 1rem;
 }
 
@@ -35,18 +33,16 @@ p {
 
 .stat-items {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-evenly;
 }
 
 .stat-items li {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     border-radius: 1rem;
-    background-color: rgb(var(--color-text));
-    color: rgb(var(--color-bg));
     padding: 0.5rem 1rem;
-    gap: 1rem;
     align-items: center;
 }
 
@@ -62,12 +58,11 @@ p {
 
 .uhunt-link,
 .sol-github {
-    padding: 0.3rem;
+    padding: 0.3rem 0.4rem;
     border-radius: 0.5rem;
-    background-color: rgb(var(--color-text));
+    border: solid rgb(var(--color-text)) 1px;
 }
 
 .uhunt-link a,
 .sol-github a {
-    color: rgb(var(--color-bg));
 }

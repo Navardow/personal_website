@@ -4,6 +4,7 @@ import { persistent_underline } from "./animations.js";
 import { create_proj_card } from "./projects.js";
 import create_card from "./card.js";
 import init_theme_toggle from "./theme-toggle.js";
+import { uva_stats } from "./inject.mjs";
 
 await main();
 
@@ -22,6 +23,7 @@ async function main() {
     init_theme_toggle();
     init_featured_section(featured);
     persistent_underline();
+    uva_stats();
 
     document.addEventListener("click", async (e) => {
         const link = e.target.closest(".site-link");
