@@ -23,7 +23,7 @@ async function main() {
     init_theme_toggle();
     init_featured_section(featured);
     persistent_underline();
-    uva_stats();
+    await uva_stats();
 
     document.addEventListener("click", async (e) => {
         const link = e.target.closest(".site-link");

@@ -1,4 +1,21 @@
+.stats {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 2rem;
+}
+
 .uva h3,
+.uva h4,
+.uva p,
+.leetcode h3,
+.leetcode h4,
+.leetcode p {
+    margin: 0;
+    padding: 0;
+}
+
+.leetcode h3,
 h4,
 p {
     margin: 0;
@@ -6,8 +23,7 @@ p {
 }
 
 .uva {
-    max-width: 25rem;
-    min-width: 10rem;
+    min-width: 25rem;
     padding: 0 1.5rem 1rem;
 }
 
@@ -65,4 +81,11 @@ p {
 
 .uhunt-link a,
 .sol-github a {
+}
+
+.leetcode {
+    font-family: sans-serif;
+    padding: 0 1.5rem 1rem;
+    border-radius: 8px;
+    min-width: 25rem;
 }
