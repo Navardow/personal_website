@@ -30,7 +30,7 @@ function create_proj_card(project) {
     //project_link.href = router.normalize_path(project.file);
 
     project_card_foot.append(project_tags, project_link);
-    project_card.append(project_title, project_card_foot);
+    project_card.append(project_title, project_summary, project_card_foot);
     project_item.append(project_card);
 
     return project_item;

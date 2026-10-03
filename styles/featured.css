@@ -52,17 +52,8 @@
     align-self: flex-end;
 }
 
-.sum-btn {
-    display: none;
-}
-
-.project-list .featured-summary {
-    display: block;
-}
-
 .project-card {
-    padding: 2rem 2rem 1rem;
-    border-bottom: 1px solid rgba(var(--color-accent) / 0.2);
+    padding-bottom: 1rem;
     border-radius: 0.5rem;
     max-width: 100%;
 }
@@ -93,36 +84,7 @@
 }
 
 @media (max-width: 48rem) {
-    .featured-summary {
-        display: none;
-    }
-
     .featured-card {
-        padding: 0 2rem 1rem;
-        border-bottom: 1px solid rgba(var(--color-accent) / 0.2);
-        border-radius: 0.5rem;
-        max-width: 100%;
-    }
-
-    .featured-list {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    .featured-title {
-        margin-bottom: 0.5rem;
-        font-size: 1.1rem;
-    }
-
-    .sum-btn {
-        display: inline-block;
-        border: 1px solid;
-        border-radius: 1rem;
-        margin-bottom: 1rem;
-        padding: 0 0.6rem;
-        background-color: rgb(var(--color-bg));
-        color: rgb(var(--color-text));
-        box-shadow: rgb(var(--color-text));
-        font-style: italic;
+        padding: 0.2rem 1rem;
     }
 }

@@ -9,10 +9,6 @@ export default function create_card(project) {
     featured_title.classList.add("featured-title");
     featured_title.textContent = project?.title;
 
-    const featured_summary_btn = document.createElement("button");
-    featured_summary_btn.classList.add("sum-btn");
-    featured_summary_btn.textContent = "Summary";
-
     const featured_summary = document.createElement("p");
     featured_summary.classList.add("featured-summary");
     featured_summary.textContent = project.summary;
@@ -33,12 +29,7 @@ export default function create_card(project) {
     featured_link.textContent = "Click to view →";
 
     featured_card_foot.append(featured_tags, featured_link);
-    featured_card.append(
-        featured_title,
-        featured_summary_btn,
-        featured_summary,
-        featured_card_foot,
-    );
+    featured_card.append(featured_title, featured_summary, featured_card_foot);
     featured_item.append(featured_card);
 
     return featured_item;

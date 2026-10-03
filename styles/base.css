@@ -20,6 +20,10 @@
     --color-accent: 195 195 195;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     min-height: 100vh;
     min-width: 100vw;
@@ -60,13 +64,25 @@ a {
     font-size: 0.9rem;
 }
 
+hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgb(var(--color-text)),
+        transparent
+    );
+    margin: 8rem 0;
+}
+
 .container {
     width: 100%;
     height: 100%;
     max-width: 1200px;
     margin-inline: auto;
     padding-inline: clamp(1rem, 3vw, 2rem);
-    padding: 0 5rem;
+    padding: 0 5rem 5rem;
 }
 
 .main-content {
@@ -81,7 +97,9 @@ a {
     body {
         padding: 0;
     }
-
+    body * {
+        transition: all 0.15s ease;
+    }
     p,
     li,
     a {
@@ -90,5 +108,15 @@ a {
 
     .container {
         padding: 0 2rem;
+    }
+
+    hr {
+        margin: 4rem 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
     }
 }
