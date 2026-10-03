@@ -1,7 +1,7 @@
 import { getStore } from "@netlify/blobs";
 
 export default async () => {
-    const store = getStore("uva-stats-cache");
+    const store = getStore("stats-cache");
     const data = await store.get("uva-stats");
     if (data === null) return new Response("Not cached yet\n", { status: 404 });
     return new Response(data, {

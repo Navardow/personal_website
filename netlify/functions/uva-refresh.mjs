@@ -22,8 +22,7 @@ export default async () => {
 
         const raw = await res.text();
         const cleaned = cleaner(JSON.parse(raw));
-
-        const store = getStore("uva-stats-cache");
+        const store = getStore("stats-cache");
         await store.setJSON("uva-stats", cleaned);
 
         console.log(

@@ -78,7 +78,7 @@ hr {
     max-width: 1200px;
     margin-inline: auto;
     padding-inline: clamp(1rem, 3vw, 2rem);
-    padding: 0 5rem;
+    padding: 0 5rem 5rem;
 }
 
 .main-content {
@@ -102,5 +102,9 @@ hr {
 
     .container {
         padding: 0 2rem;
+    }
+
+    hr {
+        margin: 4rem 0;
     }
 }
