@@ -3,8 +3,9 @@ import { meta } from "./data.js";
 
 const renderer = {
     image({ href, title, text }) {
-        return `<img src="${href}" alt="${text}" class="md-img"${title ? ` title="${title}"` : ""
-            }>`;
+        return `<img src="${href}" alt="${text}" class="md-img"${
+            title ? ` title="${title}"` : ""
+        }>`;
     },
     paragraph({ tokens }) {
         const text = this.parser.parseInline(tokens);
@@ -42,12 +43,15 @@ files_promises.then(async (r) => {
 export const router = {
     initialized: false,
 
-    async handle_route(path) {
-        window.history.pushState({}, "", path);
+    async handle_route(path, { push = true } = {}) {
+        if (push) window.history.pushState({}, "", path);
         window.current_location = path;
+        router.set_title(path);
+
         const main_content = document.querySelector(".main-content");
         main_content.innerHTML = "<h3> loading... </h2>";
         const html = await router.get_route(path);
+
         if (path !== "/projects") {
             main_content.innerHTML = html;
         } else {
@@ -58,6 +62,11 @@ export const router = {
 
     set_route(path, html_content) {
         routes[router.normalize_path(path)] = html_content;
+    },
+
+    set_title(path) {
+        const name = path.split("/").filter(Boolean).pop() ?? "Home";
+        document.title = name.charAt(0).toUpperCase() + name.slice(1);
     },
 
     async get_route(path) {

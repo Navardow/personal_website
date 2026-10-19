@@ -9,7 +9,8 @@ import { uva_stats, leet_stats } from "./inject.mjs";
 await main();
 
 router.set_route("/", document.querySelector(".main-content").innerHTML);
-window.onpopstate = () => router.handle_route(window.location.pathname);
+window.onpopstate = () =>
+    router.handle_route(window.location.pathname, { push: false });
 window.router = router;
 window.current_location = window.location.pathname;
 
@@ -30,8 +31,10 @@ async function main() {
         const link = e.target.closest(".site-link");
 
         if (!link) return;
+        const path = new URL(link.href).pathname;
         e.preventDefault();
-        await router.handle_route(new URL(link.href).pathname);
+        await router.handle_route(path);
+        router.set_title(path);
     });
 }
 
