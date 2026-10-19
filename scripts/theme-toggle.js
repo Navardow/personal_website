@@ -30,7 +30,9 @@ export default function init_theme_toggle() {
 
     theme_toggle_btns.forEach((b) =>
         b.addEventListener("click", (e) => {
-            e.target === light_btn ? set_dark() : set_light();
+            const toggle = () => (e.target === light_btn ? set_dark() : set_light());
+            if (!document.startViewTransition) return toggle();
+            document.startViewTransition(toggle);
         }),
     );
 }

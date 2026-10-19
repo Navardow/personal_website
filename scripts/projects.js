@@ -5,19 +5,27 @@ function create_proj_card(project) {
     const project_card = document.createElement("div");
     project_card.classList.add("project-card");
 
+    if (project.image) {
+        const project_img = document.createElement("img");
+        project_img.classList.add("project-img");
+        project_img.src = project.image;
+        project_img.alt = project.title;
+        project_card.append(project_img);
+    }
+
     const project_title = document.createElement("h3");
-    project_title.classList.add("featured-title");
+    project_title.classList.add("project-title");
     project_title.textContent = project?.title;
 
     const project_summary = document.createElement("p");
-    project_summary.classList.add("featured-summary");
+    project_summary.classList.add("project-summary");
     project_summary.textContent = project.summary;
 
     const project_card_foot = document.createElement("div");
-    project_card_foot.classList.add("featured-card-foot");
+    project_card_foot.classList.add("project-card-foot");
 
     const project_tags = document.createElement("ul");
-    project_tags.classList.add("featured-tags");
+    project_tags.classList.add("project-tags");
     project.tags?.forEach((t) => {
         const tag = document.createElement("li");
         tag.textContent = t;
@@ -25,13 +33,13 @@ function create_proj_card(project) {
     });
 
     const project_link = document.createElement("a");
-    project_link.classList.add("featured-link", "site-link");
+    project_link.classList.add("project-link", "site-link");
     project_link.textContent = "Click to view →";
     //project_link.href = router.normalize_path(project.file);
 
     project_card_foot.append(project_tags, project_link);
-    project_card.append(project_title, project_summary, project_card_foot);
-    project_item.append(project_card);
+    project_card.append(project_title, project_card_foot);
+    project_item.append(project_card, project_summary);
 
     return project_item;
 }

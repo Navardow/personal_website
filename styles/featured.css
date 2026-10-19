@@ -52,22 +52,6 @@
     align-self: flex-end;
 }
 
-.project-card {
-    padding-bottom: 1rem;
-    border-radius: 0.5rem;
-    max-width: 100%;
-}
-
-.project-list {
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.project-title {
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
-}
-
 @media (hover: hover) and (pointer: fine) {
     .featured-card:hover {
         transform: translateY(-0.1rem) scale(1.01);

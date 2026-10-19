@@ -1,6 +1,12 @@
 async function uva_stats() {
     const origin = window.location.origin;
     const res = await fetch(`${origin}/uva-stats`);
+    if (!res.ok) {
+        ["submissions", "solved", "accepted"].forEach(
+            (id) => (document.getElementById(id).textContent = "unavailable"),
+        );
+        return;
+    }
     const data = await res.json();
 
     const submissions = document.getElementById("submissions");
@@ -17,6 +23,12 @@ async function uva_stats() {
 async function leet_stats() {
     const origin = window.location.origin;
     const res = await fetch(`${origin}/leet-stats`);
+    if (!res.ok) {
+        ["l-uname", "lc-total", "lc-easy", "lc-medium", "lc-hard", "lc-rate"].forEach(
+            (id) => (document.getElementById(id).textContent = "unavailable"),
+        );
+        return;
+    }
     const data = await res.json();
 
     const stats = data.matchedUser.submitStats.acSubmissionNum;

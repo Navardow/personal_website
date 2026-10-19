@@ -1,9 +1,10 @@
 import { meta } from "./data.js";
 import { router } from "./router.js";
-import { persistent_underline } from "./animations.js";
+import { persistent_underline } from "./underline.js";
 import { create_proj_card } from "./projects.js";
 import create_card from "./card.js";
 import init_theme_toggle from "./theme-toggle.js";
+import init_project_timeline from "./timeline.js";
 import { uva_stats, leet_stats } from "./inject.mjs";
 
 await main();
@@ -24,8 +25,7 @@ async function main() {
     init_theme_toggle();
     init_featured_section(featured);
     persistent_underline();
-    await uva_stats();
-    await leet_stats();
+    await Promise.allSettled([uva_stats(), leet_stats()]);
 
     document.addEventListener("click", async (e) => {
         const link = e.target.closest(".site-link");
@@ -48,6 +48,9 @@ function init_featured_section(featured) {
 }
 
 function projects_page() {
+    const project_timeline = document.createElement("div");
+    project_timeline.classList.add("project-timeline");
+
     const project_list = document.createElement("ul");
     project_list.classList.add("project-list");
     meta.projects?.forEach((p) => {
@@ -55,5 +58,7 @@ function projects_page() {
         card.querySelector(".site-link").href = router.normalize_path(p.file);
         project_list.append(card);
     });
-    router.set_route("/projects", project_list);
+    project_timeline.append(project_list);
+    init_project_timeline(project_timeline);
+    router.set_route("/projects", project_timeline);
 }
