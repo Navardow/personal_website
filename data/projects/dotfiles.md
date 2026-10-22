@@ -41,15 +41,18 @@ I won't bore you with the thought process behind all of my ricing decisions. Her
 
 - &emsp;Terminal - Alacritty
 
-- &emsp;Application Launcher - Fuzzel
+- &emsp;Status Bar - Waybar, with my own volume and Spotify popups and a notification center
 
-- &emsp;Notification Daemon - Mako
+- &emsp;Launcher - Fuzzel (apps, wifi, bluetooth)
 
-- &emsp;Status Bar - Waybar
+- &emsp;Notifications - Mako
 
-- &emsp;Screen Lock - Swaylock
+- &emsp;Lock Screen - Hyprlock (Swaylock as fallback)
 
-- &emsp;Wallpaper Manager - Waypaper + Swaybg
+- &emsp;Wallpaper - Waypaper + Swaybg
+
+Everything is themed black and white, and a single `setup.sh` installs every package and
+links the configs with GNU stow, so a fresh Arch install becomes this machine in one command.
 
 Configuration files are available at _https://www.github.com/NavardoW/dotfiles/_
 
@@ -102,4 +105,5 @@ I'll save the rest for another time.
 <br>
 <br>
 <br>
+
 _Navardo Williams - Aug 22, 2026_

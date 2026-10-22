@@ -1,4 +1,4 @@
-import { marked as convert } from "https://cdn.jsdelivr.net/npm/marked/+esm";
+import { marked as convert } from "https://cdn.jsdelivr.net/npm/marked@18.0.5/+esm";
 import { meta } from "./data.js";
 
 const renderer = {
@@ -17,28 +17,23 @@ convert.use({ renderer });
 
 const routes = {};
 
-const files = meta.projects
-    ?.map((p) => {
-        if (Object.hasOwn(p, "file")) return fetch(p.file);
-    })
-    .filter((p) => p != null);
-
-files.push(fetch(meta.about.file), fetch(meta.contact.file));
-
-const files_promises = Promise.all(files);
+const files = [
+    ...(meta.projects ?? []).filter((p) => Object.hasOwn(p, "file")).map((p) => p.file),
+    meta.about.file,
+    meta.contact.file,
+];
 
 let routes_ready = false;
 
-files_promises.then(async (r) => {
-    await Promise.all(
-        r.map((item) =>
-            item?.text().then((t) => {
-                return router.set_route(item.url, convert(t));
-            }),
-        ),
-    );
-    routes_ready = true;
-});
+// one failed file must not block every route; missing ones fall through to the 404
+Promise.allSettled(
+    files.map(async (file) => {
+        const res = await fetch(file);
+        // the SPA fallback answers missing files with index.html, so a 200 isn't enough
+        if (!res.ok || res.headers.get("content-type")?.includes("text/html")) return;
+        router.set_route(file, convert(await res.text()));
+    }),
+).then(() => (routes_ready = true));
 
 export const router = {
     initialized: false,
@@ -49,14 +44,18 @@ export const router = {
         router.set_title(path);
 
         const main_content = document.querySelector(".main-content");
-        main_content.innerHTML = "<h3> loading... </h2>";
+        main_content.innerHTML = "<h3>loading...</h3>";
         const html = await router.get_route(path);
+        router.set_title(path);
 
-        if (path !== "/projects") {
-            main_content.innerHTML = html;
+        // live elements (home, /projects) are moved in; markdown routes are strings
+        if (html instanceof Node) {
+            main_content.replaceChildren(html);
         } else {
-            main_content.innerHTML = "";
-            main_content.append(html);
+            const page = path.slice(1);
+            main_content.innerHTML = ["about", "contact"].includes(page)
+                ? `<article class="page page-${page}">${html}</article>`
+                : html;
         }
     },
 
@@ -65,6 +64,10 @@ export const router = {
     },
 
     set_title(path) {
+        if (routes_ready && !Object.hasOwn(routes, path)) {
+            document.title = "Not found";
+            return;
+        }
         const name = path.split("/").filter(Boolean).pop() ?? "Home";
         document.title = name.charAt(0).toUpperCase() + name.slice(1);
     },
@@ -75,12 +78,15 @@ export const router = {
         }
         return (
             routes[path] ??
-            `<h2 style='text-align: center'>404<br>
-            What you're looking 
-            for doesn't exist, head back to home page.</h2><br>
-            <div style='text-align: center;'>
-            <button style='border-radius: .7rem' onClick="router.handle_route('/')">Go Home</button>
-            </div>`
+            `<section class="intro">
+                <p class="eyebrow">404</p>
+                <h1 class="hero-name"><i>Page not found</i></h1>
+                <p class="hero-tagline">What you're looking for doesn't exist.</p>
+                <div class="hero-actions">
+                    <a class="site-link btn btn-solid" href="/">Back home &rarr;</a>
+                    <a class="site-link btn btn-ghost" href="/projects">View projects</a>
+                </div>
+            </section>`
         );
     },
 

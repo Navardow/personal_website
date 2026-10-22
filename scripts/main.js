@@ -1,41 +1,44 @@
 import { meta } from "./data.js";
 import { router } from "./router.js";
-import { persistent_underline } from "./underline.js";
+import { set_active_link } from "./underline.js";
 import { create_proj_card } from "./projects.js";
 import create_card from "./card.js";
 import init_theme_toggle from "./theme-toggle.js";
-import init_project_timeline from "./timeline.js";
 import { uva_stats, leet_stats } from "./inject.mjs";
 
-await main();
+const home = document.querySelector(".home");
 
-router.set_route("/", document.querySelector(".main-content").innerHTML);
-window.onpopstate = () =>
-    router.handle_route(window.location.pathname, { push: false });
+projects_page();
+init_theme_toggle();
+init_featured_section(meta.projects.filter((p) => p.featured == true));
+router.set_route("/", home);
+
+// stats fill in the background, into the home element wherever it currently is
+Promise.allSettled([uva_stats(home), leet_stats(home)]);
+
+document.addEventListener("click", (e) => {
+    const link = e.target.closest(".site-link");
+
+    // let modified / non-left clicks open new tabs as usual
+    if (!link || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey)
+        return;
+    e.preventDefault();
+    navigate(new URL(link.href).pathname);
+});
+
+window.onpopstate = () => navigate(window.location.pathname, { push: false });
 window.router = router;
 window.current_location = window.location.pathname;
 
 if (window.location.pathname !== "/") {
-    router.handle_route(window.location.pathname);
+    navigate(window.location.pathname, { push: false });
+} else {
+    set_active_link("/");
 }
 
-async function main() {
-    projects_page();
-    const featured = meta.projects.filter((p) => p.featured == true);
-    init_theme_toggle();
-    init_featured_section(featured);
-    persistent_underline();
-    await Promise.allSettled([uva_stats(), leet_stats()]);
-
-    document.addEventListener("click", async (e) => {
-        const link = e.target.closest(".site-link");
-
-        if (!link) return;
-        const path = new URL(link.href).pathname;
-        e.preventDefault();
-        await router.handle_route(path);
-        router.set_title(path);
-    });
+async function navigate(path, options) {
+    set_active_link(path);
+    await router.handle_route(path, options);
 }
 
 function init_featured_section(featured) {
@@ -48,9 +51,6 @@ function init_featured_section(featured) {
 }
 
 function projects_page() {
-    const project_timeline = document.createElement("div");
-    project_timeline.classList.add("project-timeline");
-
     const project_list = document.createElement("ul");
     project_list.classList.add("project-list");
     meta.projects?.forEach((p) => {
@@ -58,7 +58,5 @@ function projects_page() {
         card.querySelector(".site-link").href = router.normalize_path(p.file);
         project_list.append(card);
     });
-    project_timeline.append(project_list);
-    init_project_timeline(project_timeline);
-    router.set_route("/projects", project_timeline);
+    router.set_route("/projects", project_list);
 }

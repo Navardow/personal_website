@@ -4,13 +4,31 @@
 }
 
 .md-p-text {
-    font-size: 1rem;
+    font-size: 0.9rem;
     padding: 0 1rem;
+}
+
+/* project write-ups render straight into .main-content */
+.main-content > ul:not(.project-list) > li,
+.main-content > ul:not(.project-list) > li > p {
+    padding-left: 1em;
+    text-indent: -1em;
+}
+
+.main-content > pre {
+    margin-left: 1rem;
+    padding: 0.25rem 0 0.25rem 1rem;
+    border-left: 2px solid var(--border);
+    overflow-x: auto;
 }
 
 @media (max-width: 48rem) {
     .md-img {
         width: 100%;
         height: 110%;
+    }
+
+    .md-p-text {
+        font-size: 0.8rem;
     }
 }

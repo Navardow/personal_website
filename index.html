@@ -8,6 +8,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+        try {
+            if (localStorage.getItem("theme") === "dark")
+                document.documentElement.setAttribute("data-theme", "dark");
+        } catch {}
+    </script>
     <link href="/styles/style.css" rel="stylesheet">
     <script src="/scripts/main.js" type="module" defer></script>
 </head>
@@ -23,106 +29,106 @@
             <li><a class="site-link" href="/contact">Contact</a> </li>
             <li><a class="site-link" href="/about">About</a> </li>
         </ul>
-        <div class=theme-toggle-buttons>
-            <img class="theme-toggle-dark theme-toggle" src="/assets/offswitch.png" alt="dark-theme-toggle-button">
-            </img>
-            <img class="theme-toggle-light theme-toggle" src="/assets/onswitch.png" alt="light-theme-toggle-button">
-            </img>
-        </div>
+        <button class="theme-toggle-buttons" type="button" aria-label="Toggle theme">
+            <img class="theme-toggle-dark theme-toggle" src="/assets/offswitch.png" alt="">
+            <img class="theme-toggle-light theme-toggle" src="/assets/onswitch.png" alt="">
+        </button>
     </nav>
     <div class="container">
         <main class="main-content">
-            <section class="intro">
-                <h3> <i>Navardo Williams<i></h3>
-                <p>This is my portfolio, enjoy!</p>
-            </section>
-            <section class="featured">
-                <h3 class="featured-header"><i>Featured</i></h3>
-                <ul class="featured-list">
-            </section>
-            <hr>
-            <section class="stats">
-                <div class="uva">
-                    <div class="uva-stats-head">
-                        <h4>UVa Online Judge</h4> 
-                        <p> &bull; Quick glance</p>
+            <div class="home">
+                <section class="intro">
+                    <p class="eyebrow">Portfolio</p>
+                    <h1 class="hero-name"><i>Navardo Williams</i></h1>
+                    <p class="hero-tagline">This is my portfolio, enjoy!</p>
+                    <div class="hero-actions">
+                        <a class="site-link btn btn-solid" href="/projects">View projects &rarr;</a>
+                        <a class="site-link btn btn-ghost" href="/about">About me</a>
                     </div>
-                    <div class="uva-uname-id">
-                        <h3 class="uva-uname"> IskandarSubarashi </h3>
-                        <p class="uva-id">ID: 1749010</> 
-                    </div>
-                    <div class="uva-stats">
-                        <ul class="uva-stat-items">
-                            <li class="subs">
-                                <p>Submissions</P> 
-                                <span id="submissions">loading...</span> 
-                            </li>     
-                            <li class="solved">
-                                <p>Solved</P>
-                                <span id="solved">loading...</span> 
-                            </li>     
-                            <li class="accepted">
-                                <p><strong>Acceptance</strong></P>
-                                <span id="accepted">loading...</span> 
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="uva-links">
-                        <div class="sol-github">
-                            <a href="https://github.com/navardow/UVa-Problems">
+                </section>
+                <section class="featured">
+                    <h3 class="section-label featured-header"><i>Featured</i></h3>
+                    <ul class="featured-list"></ul>
+                </section>
+                <section class="stats">
+                    <div class="uva stat-card">
+                        <div class="uva-stats-head">
+                            <h4>UVa Online Judge</h4>
+                            <p>&bull; Quick glance</p>
+                        </div>
+                        <div class="uva-uname-id">
+                            <h3 class="uva-uname">IskandarSubarashi</h3>
+                            <p class="uva-id">ID: 1749010</p>
+                        </div>
+                        <div class="uva-stats">
+                            <ul class="uva-stat-items">
+                                <li class="subs">
+                                    <p>Submissions</p>
+                                    <span id="submissions">loading...</span>
+                                </li>
+                                <li class="solved">
+                                    <p>Solved</p>
+                                    <span id="solved">loading...</span>
+                                </li>
+                                <li class="accepted">
+                                    <p>Acceptance</p>
+                                    <span id="accepted">loading...</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="uva-links">
+                            <a class="btn btn-ghost" href="https://github.com/navardow/UVa-Problems">
                                 Coded Solutions
                             </a>
-                        </div> 
-                        <div class="uhunt-link"> 
-                            <a href="https://uhunt.onlinejudge.org/id/1749010">
+                            <a class="btn btn-ghost" href="https://uhunt.onlinejudge.org/id/1749010">
                                 uHunt Profile
                             </a>
                         </div>
                     </div>
-                </div>
-                <div class="leetcode" >
-                    <div class="leet-stats-head">
-                        <h4>LeetCode</h4>
-                        <p> &bull; Quick glance </p>
+                    <div class="leetcode stat-card">
+                        <div class="leet-stats-head">
+                            <h4>LeetCode</h4>
+                            <p>&bull; Quick glance</p>
+                        </div>
+                        <div class="leet-uname">
+                            <h3 id="l-uname">Loading...</h3>
+                        </div>
+                        <div class="leet-stats">
+                            <ul class="leet-stat-items">
+                                <li class="leet-total">
+                                    <p>Total Solved</p>
+                                    <span id="lc-total">Loading...</span>
+                                </li>
+                                <li class="leet-row">
+                                    <p>Easy</p>
+                                    <div class="leet-easy-bar leet-bars"></div>
+                                    <span id="lc-easy">-</span>
+                                </li>
+                                <li class="leet-row">
+                                    <p>Medium</p>
+                                    <div class="leet-medium-bar leet-bars"></div>
+                                    <span id="lc-medium">-</span>
+                                </li>
+                                <li class="leet-row">
+                                    <p>Hard</p>
+                                    <div class="leet-hard-bar leet-bars"></div>
+                                    <span id="lc-hard">-</span>
+                                </li>
+                                <li class="leet-rate">
+                                    <p>Acceptance Rate</p>
+                                    <span id="lc-rate">-</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="leet-links">
+                            <a class="btn btn-ghost" href="https://leetcode.com/u/IskandarSubarashi/">Profile With Solutions</a>
+                        </div>
                     </div>
-                    <div class="leet-uname">
-                        <h3 id="l-uname">Loading...</h3> 
-                    </div>
-                    <div class="leet-stats">
-                        <ul class="leet-stat-items">
-                            <li>
-                                <p><strong>Total Solved:</strong></p>
-                                <span id="lc-total">Loading...</span>
-                            </li>
-                            <li class="leet-row">
-                                <p>Easy: </p>
-                                <div class="leet-easy-bar leet-bars"> </div>
-                                <span id="lc-easy">-</span>
-                            </li>
-                            <li class="leet-row">
-                                <p>Medium:</p>
-                                <div class="leet-medium-bar leet-bars"> </div>
-                                <span id="lc-medium">-</span>
-                            </li> 
-                           <li class="leet-row">
-                               <p>Hard: </p>
-                                <div class="leet-hard-bar leet-bars"> </div>
-                               <span id="lc-hard">-</span>
-                           </li> 
-                           <li>
-                               <p><strong>Acceptance Rate:</strong></p>
-                               <span id="lc-rate">-</span>
-                           </li>
-                           <div class="leet-link">
-                               <a href="https://leetcode.com/u/IskandarSubarashi/">Profile With Solutions</a>
-                           </div>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-            <section class="Working-on">
-                <h3 style="display: none"><i>Working on</i></h3>
-            </section>
+                </section>
+                <section class="Working-on">
+                    <h3 style="display: none"><i>Working on</i></h3>
+                </section>
+            </div>
         </main>
     </div>
 </body>

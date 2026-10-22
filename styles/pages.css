@@ -1,0 +1,149 @@
+.page {
+    position: relative;
+    isolation: isolate;
+    max-width: 48rem;
+    margin-inline: auto;
+    padding: 3rem 0 2rem;
+    animation: fade-up 0.6s ease both;
+}
+
+.page::before {
+    display: block;
+    margin-bottom: 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgb(var(--color-primary));
+}
+
+.page-about::before {
+    content: "About";
+}
+
+.page-contact::before {
+    content: "Contact";
+}
+
+.page::after {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 14rem;
+    z-index: -1;
+    background: radial-gradient(
+        ellipse 40% 45% at 30% 55%,
+        var(--glow),
+        transparent 70%
+    );
+    pointer-events: none;
+}
+
+.page h2 {
+    margin: 0 0 2rem;
+    font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+    font-weight: 600;
+    font-style: italic;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+}
+
+.page-about .md-p-text {
+    max-width: 62ch;
+    margin: 0;
+    padding: 1.75rem 2rem;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: rgb(var(--color-text) / 0.8);
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.page-contact ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    gap: 1.25rem;
+}
+
+.page-contact li {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    min-width: 0;
+    padding: 1.5rem 1.75rem;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.page-contact li strong {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgb(var(--color-primary));
+}
+
+.page-contact li a {
+    font-size: 1rem;
+    font-weight: 500;
+    overflow-wrap: anywhere;
+}
+
+.page-contact li a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+}
+
+.page-contact li::after {
+    content: "";
+    position: absolute;
+    top: 1.25rem;
+    right: 1.5rem;
+    color: rgb(var(--color-text) / 0.4);
+    transition:
+        transform 0.3s ease,
+        color 0.3s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .page-contact li:hover {
+        transform: translateY(-2px);
+        border-color: rgb(var(--color-accent));
+    }
+
+    .page-contact li:hover::after {
+        transform: translate(1px, -1px);
+        color: rgb(var(--color-text));
+    }
+}
+
+@media (max-width: 48rem) {
+    .page {
+        padding-top: 1.5rem;
+    }
+
+    .page-about .md-p-text {
+        padding: 1.25rem;
+        font-size: 0.9rem;
+    }
+
+    .page-contact li {
+        padding: 1.25rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page {
+        animation: none;
+    }
+}

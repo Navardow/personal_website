@@ -10,6 +10,12 @@
     --color-primary: 151 141 130;
     --color-secondary: 200 191 183;
     --color-accent: 105 105 105;
+
+    --surface: rgb(var(--color-text) / 0.015);
+    --border: rgb(var(--color-text) / 0.08);
+    --radius: 1rem;
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.03), 0 6px 20px rgb(0 0 0 / 0.04);
+    --glow: rgb(var(--color-text) / 0.03);
 }
 
 [data-theme="dark"] {
@@ -18,6 +24,11 @@
     --color-primary: 125 115 104;
     --color-secondary: 72 63 55;
     --color-accent: 195 195 195;
+
+    --surface: rgb(var(--color-secondary) / 0.12);
+    --border: rgb(var(--color-text) / 0.1);
+    --glow: rgb(var(--color-secondary) / 0.18);
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px rgb(0 0 0 / 0.35);
 }
 
 html {
@@ -66,7 +77,7 @@ hr {
         rgb(var(--color-text)),
         transparent
     );
-    margin: 8rem 0;
+    margin: 5rem 0;
 }
 
 .container {
@@ -74,7 +85,8 @@ hr {
     height: 100%;
     max-width: 1200px;
     margin-inline: auto;
-    padding: 0 5rem 5rem;
+    /* wider than the nav's 5rem inset so the header extends past the content */
+    padding: 0 clamp(7rem, 4rem + 10vw, 14rem) 5rem;
 }
 
 .main-content {
@@ -82,7 +94,122 @@ hr {
 }
 
 .intro {
+    position: relative;
+    isolation: isolate;
     text-align: center;
+    padding: 4rem 0 5rem;
+}
+
+.intro::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(
+        ellipse 50% 60% at 50% 45%,
+        var(--glow),
+        transparent 70%
+    );
+    pointer-events: none;
+}
+
+.eyebrow,
+.section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgb(var(--color-primary));
+}
+
+.eyebrow {
+    margin: 0 0 1rem;
+}
+
+.section-label {
+    margin: 0 0 1.5rem;
+}
+
+.hero-name {
+    margin: 0;
+    font-size: clamp(1.85rem, 4.5vw, 2.85rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+}
+
+.hero-tagline {
+    margin: 1rem 0 1.75rem;
+    font-size: 0.95rem;
+    color: rgb(var(--color-text) / 0.65);
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.btn,
+.btn:visited {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.55rem 1.1rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.btn-solid,
+.btn-solid:visited {
+    background-color: rgb(var(--color-text));
+    border-color: rgb(var(--color-text));
+    color: rgb(var(--color-bg));
+}
+
+.btn-ghost {
+    background-color: var(--surface);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .btn:hover {
+        transform: translateY(-1px);
+    }
+
+    .btn-ghost:hover {
+        border-color: rgb(var(--color-accent));
+    }
+
+    .btn-solid:hover {
+        color: rgb(var(--color-bg));
+    }
+}
+
+.main-content > section,
+.home > section {
+    animation: fade-up 0.6s ease both;
+}
+
+.home > section:nth-of-type(2) {
+    animation-delay: 0.1s;
+}
+
+.home > section:nth-of-type(3) {
+    animation-delay: 0.2s;
+}
+
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
 }
 
 @media (max-width: 48rem) {
@@ -97,11 +224,15 @@ hr {
     }
 
     .container {
-        padding: 0 2rem;
+        padding: 0 3.25rem 4rem;
     }
 
     hr {
-        margin: 4rem 0;
+        margin: 3rem 0;
+    }
+
+    .intro {
+        padding: 2rem 0 3rem;
     }
 }
 
@@ -111,7 +242,9 @@ hr {
     }
 
     ::view-transition-old(root),
-    ::view-transition-new(root) {
+    ::view-transition-new(root),
+    .main-content > section,
+    .home > section {
         animation: none;
     }
 }

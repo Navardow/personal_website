@@ -2,16 +2,16 @@ function create_proj_card(project) {
     const project_item = document.createElement("li");
     project_item.classList.add("project-item");
 
-    const project_card = document.createElement("div");
-    project_card.classList.add("project-card");
-
     if (project.image) {
         const project_img = document.createElement("img");
         project_img.classList.add("project-img");
         project_img.src = project.image;
         project_img.alt = project.title;
-        project_card.append(project_img);
+        project_item.append(project_img);
     }
+
+    const project_body = document.createElement("div");
+    project_body.classList.add("project-body");
 
     const project_title = document.createElement("h3");
     project_title.classList.add("project-title");
@@ -35,11 +35,10 @@ function create_proj_card(project) {
     const project_link = document.createElement("a");
     project_link.classList.add("project-link", "site-link");
     project_link.textContent = "Click to view →";
-    //project_link.href = router.normalize_path(project.file);
 
     project_card_foot.append(project_tags, project_link);
-    project_card.append(project_title, project_card_foot);
-    project_item.append(project_card, project_summary);
+    project_body.append(project_title, project_summary, project_card_foot);
+    project_item.append(project_body);
 
     return project_item;
 }

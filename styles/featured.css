@@ -4,71 +4,89 @@
 
 .featured-list {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 1rem;
+    flex-direction: column;
+    border-top: 1px solid var(--border);
 }
 
 .featured-card {
-    border: 1px rgb(var(--color-bg)) solid;
-    border-radius: 1rem;
-    padding: 1rem 2rem;
-    max-width: 320px;
-    min-width: 100px;
-    transition: transform 0.5s ease;
+    display: grid;
+    grid-template-columns: minmax(10rem, 1fr) 2fr;
+    grid-template-areas:
+        "title summary"
+        "title foot";
+    column-gap: 3rem;
+    row-gap: 1rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
 }
 
 .featured-title {
-    font-size: large;
-    font-weight: bold;
-    margin-bottom: 1rem;
-    margin-top: 0;
-    /*might delete*/
+    grid-area: title;
+    margin: 0;
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    transition: transform 0.3s ease;
+}
+
+.featured-summary {
+    grid-area: summary;
+    max-width: 60ch;
+    margin: 0;
+    line-height: 1.7;
+    color: rgb(var(--color-text) / 0.7);
+}
+
+.featured-card-foot {
+    grid-area: foot;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
 }
 
 .featured-tags {
     display: flex;
     flex-wrap: wrap;
-    flex: 1;
-    gap: 1rem;
     font-style: italic;
 }
 
-.featured-card-foot {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    row-gap: 0.5rem;
-    column-gap: 0.75rem;
+.featured-tags li {
+    font-size: 0.8rem;
+    color: rgb(var(--color-text) / 0.55);
+}
+
+.featured-tags li + li::before {
+    content: "·";
+    margin: 0 0.5rem;
 }
 
 .featured-link {
     font-style: italic;
-    text-align: right;
+    font-weight: 500;
     cursor: pointer;
     transition: transform 0.3s ease;
-    width: max-content;
-    align-self: flex-end;
 }
 
 @media (hover: hover) and (pointer: fine) {
-    .featured-card:hover {
-        transform: translateY(-0.1rem) scale(1.01);
-        border: 1px solid rgb(var(--color-accent));
-    }
-
     .featured-card:hover a {
         color: inherit;
     }
 
-    .featured-link:hover {
-        transform: translateX(1rem);
+    .featured-card:hover .featured-link {
+        transform: translateX(0.25rem);
     }
 }
 
 @media (max-width: 48rem) {
     .featured-card {
-        padding: 0.2rem 1rem;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "title"
+            "summary"
+            "foot";
+        padding: 1.5rem 0;
     }
 }
