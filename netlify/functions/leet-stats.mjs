@@ -1,12 +1,14 @@
 import { getStore } from "@netlify/blobs";
+import { logged } from "../lib/logged.mjs";
+import { serveStats, STORE_NAME } from "../lib/stats.mjs";
+import { refreshLeet, LEET_KEY } from "../lib/leet.mjs";
 
-export default async () => {
-    const store = getStore("stats-cache");
-    const data = await store.get("leet-stats");
-    if (data === null) return new Response("Not cached yet\n", { status: 404 });
-
-    return new Response(data, {
-        headers: { "content-type": "application/json" },
+export default () => {
+    const store = getStore(STORE_NAME);
+    return serveStats({
+        store,
+        key: LEET_KEY,
+        refresh: () => logged("LeetCode refresh (cache miss)", () => refreshLeet({ store })),
     });
 };
 
